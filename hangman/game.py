@@ -52,7 +52,7 @@ def guess_letter(game, letter):
         game['previous_guesses'].append(letter.lower())
         if game['masked_word'] == game['answer_word']:
             raise GameWonException()
-        elif game['masked_word'] == game['answer_word'] or game['remaining_misses'] == 0:
+        elif game['remaining_misses'] == 0:
             raise GameFinishedException()
 
     else:
@@ -60,7 +60,7 @@ def guess_letter(game, letter):
         game['remaining_misses'] -= 1
         if game['remaining_misses'] == 0:
             raise GameLostException()
-        elif game['masked_word'] == game['answer_word'] or game['remaining_misses'] == 0:
+        elif game['masked_word'] == game['answer_word']:
             raise GameFinishedException()
             
     return game
